@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>First differing monomial digit</title>
+<style>
+:root{color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:#101d25;color:#f5faf8;font:1rem/1.5 system-ui,sans-serif}
+main{max-width:900px;margin:auto;padding:24px clamp(12px,4vw,32px)}
+h1{line-height:1.15;margin:0}
+p{color:#c6dedb}
+.scene{background:#172c35;border:1px solid #34525f;border-radius:16px;padding:14px}
+canvas{display:block;width:100%;height:auto}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+label{display:grid;gap:4px}
+input{width:100%;min-height:36px;accent-color:#a6f2c2}
+output{display:block;color:#a6f2c2;font-weight:640}
+a{color:#a6f2c2}
+@media(max-width:430px){.controls{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<h1>First differing monomial digit</h1>
+<p>Compare inclusion choices for 3^q, 4^q and 5^q, after fixing the base pair {1, 2^q}.</p>
+<div class="scene">
+<canvas id="scene" width="820" height="380" role="img" aria-label="Rotatable tree of included and omitted continued-fraction digits">Binary tree with a digit choice at each depth.</canvas>
+<output id="caption" aria-live="polite"></output>
+<p>Muted edges omit a digit. Bright edges include it. The spacing is schematic.</p>
+</div>
+<div class="controls">
+<label for="level">Prefix depth<input id="level" type="range" min="1" max="3" value="3"></label>
+<label for="angle">View angle<input id="angle" type="range" min="0" max="360" value="20"></label>
+</div>
+<p>For adjacent strings the first differing digit outweighs every later digit combined for all sufficiently large q. That creates an open gap between the dimensions realized by the two strings.</p>
+</main>
+<script>
+"use strict";
+const canvas=document.querySelector("#scene");
+const ctx=canvas.getContext("2d");
+const angle=document.querySelector("#angle"),level=document.querySelector("#level");
+function project(x,y,z,a) {
+  const horizontal=x*Math.cos(a)-z*Math.sin(a);
+  const depth=x*Math.sin(a)+z*Math.cos(a);
+  const scale=94/(6-depth*.25);
+  return [410+horizontal*scale*4.9,62+(y-.13*depth)*scale*4.7,depth];
+}
+function node(i,k,a) {
+  const width=2**k;
+  return project(9*((i+.5)/width-.5),k*1.05,k%2?.74:-.74,a);
+}
+function draw(){
+  const a=angle.value*Math.PI/180, n=Number(level.value);
+  ctx.clearRect(0,0,820,380);
+  for(let k=1;k<=n;k++) for(let i=0;i<2**k;i++){
+    const from=node(i>>1,k-1,a), to=node(i,k,a);
+    ctx.beginPath();ctx.moveTo(...from.slice(0,2));ctx.lineTo(...to.slice(0,2));
+    ctx.strokeStyle=i%2?"#a6f2c2":"#678d9d";ctx.lineWidth=3;ctx.stroke();
+  }
+  for(let k=0;k<=n;k++) for(let i=0;i<2**k;i++){
+    const [x,y]=node(i,k,a);
+    ctx.beginPath(); ctx.arc(x,y,k===n?6:4,0,2*Math.PI);
+    ctx.fillStyle=k===n?"#f5faf8":"#b8d2db";ctx.fill();
+    if(k===n){
+      ctx.fillStyle="#f5faf8";ctx.font="700 17px system-ui";ctx.textAlign="center";
+      ctx.fillText(i.toString(2).padStart(n,"0"),x,y+25);
+    }
+  }
+  document.querySelector("#caption").textContent=2 ** n + " distinct prefix groups at the displayed depth";
+}
+angle.addEventListener("input",draw);level.addEventListener("input",draw);draw();
+</script>
+</body>
+</html>

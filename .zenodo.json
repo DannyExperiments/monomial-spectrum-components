@@ -1,0 +1,30 @@
+{
+  "title": "At least linearly many components in monomial continued-fraction spectra",
+  "upload_type": "software",
+  "version": "1.0.0",
+  "creators": [
+    {
+      "name": "DannyExperiments"
+    }
+  ],
+  "description": "For all sufficiently large integers q, the dimension spectrum for continued fractions with digits in {n^q : n ≥ 1} has at least 2^(floor(log₂ q)−2) connected components, and hence at least q/8.\n\nConjugating the digit-1 branch to a linear map gives a uniform pressure bracket for all subalphabets containing {1, 2^q}. At the first differing digit m^q, its pressure contribution dominates the entire later tail uniformly through m=floor(log₂ q). Every initial bit pattern occurs, adjacent patterns are strictly separated, and all dimensions missing the base pair lie below them.\n\nChitanga, Lemmens and Nussbaum prove the number of components is finite for each exponent and compute some small-exponent counts. Their §4 gives an exact singleton calculation and §8 uses pressure-tail comparisons for monomial alphabets; Chitanga’s thesis gives additional small-exponent counts and leaves boundedness unresolved. The contribution here is the uniform growing prefix and the resulting exponential count in its length.\n\nThe theorem is asymptotic. It gives a lower bound and leaves the exact counts and the location of count jumps open. Finite replay checks the symbolic and numerical examples used to illustrate the analytic proof. The manuscript contains the proof. Independent review checked the analytic derivation, the tail estimates and the source quantifiers. No Lean formalization was attempted. External peer review is pending.\n\nUnder human direction, ChatGPT Astra 6.2 (OpenAI) generated the discovery proof packet. OpenAI Codex carried out the release review. GPT‑6.2 Sol compared primary literature, prepared a manuscript from the proof packet, and built the illustration and packaging checks. DannyExperiments is the repository maintainer and preferred citation identity.",
+  "keywords": [
+    "continued fractions",
+    "Hausdorff dimension",
+    "dimension spectrum",
+    "monomial alphabet",
+    "connected components",
+    "transfer operator"
+  ],
+  "access_right": "open",
+  "license": "other-closed",
+  "notes": "All rights reserved. Publicly downloadable files are supplied without a repository-wide reuse license.",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/DannyExperiments/monomial-spectrum-components/releases/tag/v1.0.0",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    }
+  ],
+  "publication_date": "2026-11-27"
+}

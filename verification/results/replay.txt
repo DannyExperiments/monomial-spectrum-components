@@ -1,0 +1,1 @@
+OK: rational tail constants, 1–9 bit adjacency and finite count examples

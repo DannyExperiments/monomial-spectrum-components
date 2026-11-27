@@ -1,0 +1,79 @@
+\documentclass[11pt,a4paper]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\DeclareFontShape{OMX}{cmex}{m}{n}{<->cmex10}{}
+\DeclareMathSizes{8}{8}{8}{8}
+\DeclareMathSizes{9}{9}{8}{8}
+\DeclareMathSizes{10.95}{10.95}{8}{8}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\DeclareMathOperator{\DS}{DS}
+\title{At least linearly many components in monomial continued-fraction spectra}
+\begin{document}
+\begin{abstract}
+For the alphabet of positive integer $q$th powers, consider the Hausdorff dimensions of the ordinary continued-fraction sets associated with its subalphabets. We prove that the number of connected components of this spectrum is at least $2^{\lfloor\log_2q\rfloor-2}\ge q/8$ for all sufficiently large integers $q$. This answers the boundedness question of Chitanga, Lemmens and Nussbaum. The proof separates all inclusion patterns on an initial segment of the monomial alphabet by uniform pressure estimates.
+\end{abstract}
+\maketitle
+
+For $F\subseteq\mathbb N=\{1,2,\ldots\}$, let $J_F$ be the set of irrationals in $(0,1)$ with all ordinary continued-fraction digits in $F$. Write $d(F)=\dim_H J_F$, with $d(\varnothing)=0$, and $\DS(F)=\{d(G):G\subseteq F\}$. Chitanga, Lemmens and Nussbaum \cite[Section~9]{cln} ask whether the number of intervals in $\DS(M_q)$ grows without bound for $M_q=\{n^q:n\ge1\}$, or whether a uniform upper bound exists. This is catalog question Q1537 \cite{q}. Their Theorem~1.5 gives a finite union of disjoint intervals for each $q\ge11$.
+
+\begin{theorem}
+For every sufficiently large integer $q$, the spectrum $\DS(M_q)$ has at least $2^{\lfloor\log_2 q\rfloor-2}\ge q/8$ connected components.
+\end{theorem}
+
+\section{Uniform pressure bounds}
+Write $f_a(x)=1/(a+x)$ on $[0,1]$ and
+\[
+(L_{s,F}g)(x)=\sum_{a\in F}(a+x)^{-2s}g(f_a(x)).
+\]
+For finite $F$ with at least two digits, \cite[Theorem~1.6]{cln} gives a strictly decreasing spectral radius equal to one at $s=d(F)$. Its positive eigenfunction $v_s$ satisfies $\sup v_s/\inf v_s\le e^{2s}$, by (1.2) of that paper. For infinite $F$, $d(F)$ is the supremum over finite subalphabets by \cite[Theorem~2.4]{cln}. For any positive bounded operator $L$, a strictly positive continuous $g$ with $cg\le Lg\le Cg$ gives $c\le r(L)\le C$, by iteration in the supremum norm weighted by $g$. Each one-sided comparison holds separately.
+
+Let $\phi=(1+\sqrt5)/2$ and $\rho=1/\phi$. The coordinate $h(x)=(x-\rho)/(x+\phi)$ is increasing and bi-Lipschitz on $[0,1]$. It sends the fixed points $\rho,-\phi$ of $f_1$ to $0,\infty$. Since the derivative of $f_1$ at $\rho$ is $-\rho^2$, the conjugate of $f_1$ acts by multiplication by $-\rho^2$. On $[0,1]$, the ratio of the maximum to the minimum of $h'$ is $\phi^2$. For $a\ge2$ the magnitude of the derivative of the conjugate $\psi_a=h\circ f_a\circ h^{-1}$ lies between $\phi^{-2}(a+1)^{-2}$ and $\phi^2a^{-2}$. The conjugate transfer operator $T$ has the same spectral radius, since $L_{s,F}B=BT$ where $(Bg)(x)=h'(x)^s g(h(x))$ by the chain rule. In $T1$ the branch with digit $1$ contributes $\rho^{2s}$ and each branch with digit $n^q$, $n\ge2$, contributes between $c_s n^{-2qs}$ and $C_s n^{-2qs}$, where
+\[
+c_s=(\phi^{-2}(2/3)^2)^s,\qquad C_s=\phi^{2s}.
+\]
+Both constants tend to one as $s\downarrow0$. For $u>1$ and integer $b\ge2$ the first term plus the integral starting at $b$ gives
+\begin{equation}
+\sum_{n\ge b}n^{-u}\le b^{-u}\left(1+\frac b{u-1}\right).
+\label{tail}
+\end{equation}
+Put $B_q=\log_2q$, $s_-=(9/20) B_q/q$, and $s_+=B_q/q$. For all large $q$, every finite alphabet containing $\{1,2^q\}$ satisfies $s_-<d(F)<s_+$. At $s_-$ the branch $2^q$ alone contributes at least $c_{s_-}q^{-9/10}$, while the deficit $1-\rho^{2s_-}$ is $O((\log q)/q)$. At $s_+$ all branches with $n\ge2$ together contribute $O(q^{-2})$ by \eqref{tail}, and the deficit is asymptotic to $2(\log\phi)s_+$. The pressure comparison proves both inequalities.
+
+To bound alphabets missing the base pair, fix $1/(2\log3)<c<1/(2\log2)$ and test at $s=c(\log q)/q$. The pair has a contribution from $2^q$ of order $q^{-2c\log 2}$, larger than the deficit of order $(\log q)/q$. An alphabet with $1$ and without $2^q$ has remaining contribution $O(q^{-2c\log 3})$, smaller than that deficit. Without $1$ the whole contribution is $O(q^{-2c\log 2})$. Thus every alphabet missing the pair has dimension at most $s<d(\{1,2^q\})$, using finite exhaustion and the zero dimensions for singletons.
+
+\section{Separation by the first differing digit}
+Set $M=\lfloor B_q\rfloor$. Fix an integer $3\le m\le M$ and $P\subseteq\{3,\ldots,m-1\}$. Compare the alphabets
+\[
+\begin{split}
+A&=\{1,2^q\}\cup\{n^q:n\in P\}\cup\{m^q\},\\
+U&=\{1,2^q\}\cup\{n^q:n\in P\}\cup\{n^q:n>m\}.
+\end{split}
+\]
+Write $s=d(A)$, $u=2qs$ and $u_0=(9/10)B_q$. By \eqref{tail} and $\log(1+1/m)\ge 1/(m+1)$,
+\[
+\sum_{n>m}(m/n)^u
+\le \left(\frac m{m+1}\right)^u\left(1+\frac{m+1}{u-1}\right)
+\le e^{-u_0/(M+1)}\left(1+\frac{M+1}{u_0-1}\right).
+\]
+The last expression tends to $e^{-9/10}(1+10/9)<9/10$, since the cubic Taylor sum for $e^{9/10}$ exceeds $190/81$. Thus the relative tail is less than $9/10$ uniformly in $m,P$ for all sufficiently large $q$.
+
+Let $v$ be the positive eigenfunction of $L_{s,A}$ with eigenvalue one. Dividing pointwise by $\|v\|_\infty$, the $m^q$ term is at least $e^{-2s}(2/3)^{2s}m^{-u}$ and the tail is at most $(9/10)m^{-u}$. Since $s<s_+\to0$, the coefficient in the lower bound eventually exceeds $19/20$, uniformly. Therefore
+\[
+L_{s,U}v\le v-\tfrac1{20}m^{-u}\|v\|_\infty
+             \le (1-\tfrac1{20}m^{-u})v.
+\]
+For fixed $q,m,P$, the operator series is norm-continuous near $s$, by uniform domination with the summable series $\sum_{n\ge2}n^{-2qt_0}$ for any $1/(2q)<t_0<s$. Because $\inf v>0$, some $t<s$ still gives $L_{t,U}v\le C v$ with $C<1$. The same upper bound holds for every finite subalphabet of $U$. Finite exhaustion yields $d(U)\le t<d(A)$.
+
+Every bit string on the digits $3^q,\ldots,M^q$ is realized alongside the base pair by a finite alphabet. At the first differing index $m$, every realization of the smaller string is contained in $U$ and every realization of the larger string contains $A$. For adjacent strings in lexicographic order the completion of the smaller string has all remaining bits one, so $U$ realizes it. The larger string has all remaining bits zero, so $A$ realizes it. Thus $(d(U),d(A))$ is an open gap between these adjacent groups, since all missing-pair spectra lie below $d(\{1,2^q\})$. Distinct strings give distinct components. There are $2^{M-2}$ strings and $2^M\ge q/2$.
+
+\section{Scope and antecedents}
+The branch comparison and pressure tools come from \cite{cln}, including its exact singleton calculation in Section~4 and its monomial estimates in Section~8. Its Theorem~1.5(ii) already separates alphabets missing $2^q$ from the base pair for $q\ge6$. Chitanga's thesis \cite{thesis} gives further small-$q$ component counts and leaves the uniform bound question open. The estimates here prove a diverging count by simultaneous first-difference separation. The bound allows exceptional small exponents and does not determine the exact count. The proof is analytic, with finite replay providing illustrative checks. No Lean formalization was attempted. External peer review is pending.
+
+\begin{thebibliography}{9}
+\bibitem{cln} P. Chitanga, B. Lemmens and R. Nussbaum, On the structure of the dimension spectrum for continued fraction expansions, \emph{Indag. Math.} 37 (2026), 1960--1989. \href{https://doi.org/10.1016/j.indag.2026.03.008}{DOI 10.1016/j.indag.2026.03.008}.
+\bibitem{thesis} P. Chitanga, \emph{On the Dimension Spectrum of Infinite Subsystems of Continued Fractions and Perron-Frobenius Operators}, doctoral thesis, University of Kent, 2026. \href{https://kar.kent.ac.uk/114012/}{Kent Research Archive}.
+\bibitem{q} Open Problems Catalog, \href{https://github.com/10m-u/open-problems-catalog/blob/ca8d4d44ba3db527f19f28928c240168f545ecfe/problems/mathematics/differential-equations-dynamical-systems.md\#q1537}{Q1537, pinned entry}.
+\end{thebibliography}
+\end{document}
