@@ -37,3 +37,4 @@ The SHA-256 ledger authenticates each path below. Its own bytes are recorded wit
 - `visualization/prefix-tree-explorer.zip`
 - `visualization/prefix-tree.gif`
 - `visualization/render.py`
+- `visualization/version-doi.svg`
