@@ -2,6 +2,7 @@
 
 The SHA-256 ledger authenticates each path below. Its own bytes are recorded with the release assets.
 
+- `.github/workflows/lean.yml`
 - `.github/workflows/pdf.yml`
 - `.github/workflows/replay.yml`
 - `.github/workflows/verify.yml`
@@ -22,6 +23,12 @@ The SHA-256 ledger authenticates each path below. Its own bytes are recorded wit
 - `STATUS.md`
 - `audits/public_safe_reports/LITERATURE.md`
 - `audits/public_safe_reports/MATHEMATICS.md`
+- `formal/closing/Certificate.lean`
+- `formal/closing/README.md`
+- `formal/closing/lake-manifest.json`
+- `formal/closing/lakefile.toml`
+- `formal/closing/lean-toolchain`
+- `formal/closing/verify.py`
 - `formalization/README.md`
 - `paper/BUILD.md`
 - `paper/manuscript.pdf`

@@ -65,6 +65,8 @@ def working_tree_paths(root):
     for directory, subdirs, filenames in os.walk(root):
         current = Path(directory)
         subdirs[:] = [name for name in subdirs if name not in {".git", "__pycache__"}]
+        if current == root / "formal" / "closing" and ".lake" in subdirs:
+            subdirs.remove(".lake")
         for name in subdirs + filenames:
             path = current / name
             relative = path.relative_to(root)

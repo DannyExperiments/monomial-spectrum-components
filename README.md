@@ -1,6 +1,7 @@
 # At least linearly many components in monomial continued-fraction spectra
 
 [![Repository verification](https://github.com/DannyExperiments/monomial-spectrum-components/actions/workflows/verify.yml/badge.svg?branch=main)](https://github.com/DannyExperiments/monomial-spectrum-components/actions/workflows/verify.yml) [![Replay verification](https://github.com/DannyExperiments/monomial-spectrum-components/actions/workflows/replay.yml/badge.svg?branch=main)](https://github.com/DannyExperiments/monomial-spectrum-components/actions/workflows/replay.yml) [![PDF build](https://github.com/DannyExperiments/monomial-spectrum-components/actions/workflows/pdf.yml/badge.svg?branch=main)](https://github.com/DannyExperiments/monomial-spectrum-components/actions/workflows/pdf.yml) [![Version DOI](visualization/version-doi.svg)](https://doi.org/10.5281/zenodo.24588795)
+[![Partial Lean verification](https://github.com/DannyExperiments/monomial-spectrum-components/actions/workflows/lean.yml/badge.svg?branch=main)](https://github.com/DannyExperiments/monomial-spectrum-components/actions/workflows/lean.yml)
 
 For all sufficiently large integers q, the dimension spectrum for continued fractions with digits in {n^q : n ≥ 1} has at least 2^(floor(log₂ q)−2) connected components, and hence at least q/8.
 
@@ -30,3 +31,7 @@ Conjugating the digit-1 branch to a linear map gives a uniform pressure bracket 
 ## Cite
 
 DannyExperiments. *At least linearly many components in monomial continued-fraction spectra*. Version 1.0.0, 27 November 2026. [Version DOI](https://doi.org/10.5281/zenodo.24588795).
+
+## Partial Lean verification
+
+For any real spectrum, a realized increasing list of 2^k representatives with a missing spectrum point in each adjacent gap gives an injection of those representatives into its genuine connected components, including for a nonclosed spectrum. The eigenfunction and pressure estimates establishing these gaps for the monomial digits, and the choice of k as a function of q, are in the manuscript. [Formal statement and replay](formal/closing/README.md)
